@@ -1,35 +1,37 @@
 from car import Track, Car, Moto
-from config import *
+from config import LEN_CIRCLE, TRACKS, MOTOS, CARS
 from time import sleep
-THE_END = False
+
+
 def run():
-    global THE_END
+    the_end=False
     racers = []
     print("Помещаем на старт грузовики")
-    t1=Track(0.3, 50, carrying=20)
-
+    for track in TRACKS:
+        racers.append(Track(*TRACKS[track]))
     print("Помещаем на старт лекговушки")
-    c1 = Car(0.15, 50, capacity=2)
+    for car in CARS:
+        racers.append(Car(*CARS[car]))
     print("Помещаем на старт мотоциклы")
-    m1 = Moto(0.1, 60)
-    racers.extend([t1, c1, m1])
+    for moto in MOTOS:
+        racers.append(Moto(*MOTOS[moto]))
+
     for racer in racers:
         racer.start()
-
-    while not THE_END:
-
+    print('_'*20)
+    print('Начинаем движение')
+    while not the_end:
         for racer in racers:
             racer.move()
             if LEN_CIRCLE <= racer.odometer:
-                print(f'{racer} завершил движение')
-                THE_END = True
-        sleep(1)
-        if THE_END:
+                print(f'{racer} приехал первый')
+                the_end = True
+        sleep(5)
+        if the_end:
             print('Гонка завершена')
             answer = input('Напишите "1"  если продолжаем гонку')
-            if answer=='1':
-                THE_END = False
-
+            if answer == '1':
+                the_end = False
 
 
 if __name__ == '__main__':

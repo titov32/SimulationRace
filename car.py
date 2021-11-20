@@ -20,7 +20,7 @@ class Vehicle:
             self.odometer += self.speed
             print('{}, проехал, {}'.format(self, self.odometer))
         else:
-            print(f'Был прокол: стоит {self}')
+            print(f'Прокол колеса у {self}')
 
     def get_puncture(self):
         """ обработка прокола шины
