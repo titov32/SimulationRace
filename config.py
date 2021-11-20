@@ -1,5 +1,5 @@
-track = 5
+TRACK = 5
 car = 3
 moto = 2
 
-len_circle = 100
+LEN_CIRCLE = 100
