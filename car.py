@@ -12,15 +12,15 @@ class Vehicle:
         return f'Скорость {self.speed}, вероятность прокола {self.puncture}'
 
     def start(self):
-        print(f'{self.type_} начал движение {self.print_specifications()}')
+        return f'{self.type_} начал движение {self.print_specifications()}'
 
-    def move(self):
+    def move(self) -> str:
         """ расчет прохождения одного отрезка"""
         if not self.get_puncture():
             self.odometer += self.speed
-            print('{}, проехал, {}'.format(self, self.odometer))
+            return '{}, проехал, {}'.format(self, self.odometer)
         else:
-            print(f'Прокол колеса у {self}')
+            return f'Прокол колеса у {self}'
 
     def get_puncture(self) -> bool:
         """ обработка прокола шины

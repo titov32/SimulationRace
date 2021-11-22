@@ -18,16 +18,16 @@ class Simulation:
 
     def start(self):
         for racer in self.racers:
-            racer.start()
+            print(racer.start())
         print('_' * 20)
         print('Начинаем движение')
 
     def run(self):
         while not self.the_end:
             for racer in self.racers:
-                racer.move()
+                print(racer.move())
                 sleep(0.5)
-                if self.road.end_distanсe(racer.odometer):
+                if self.road.end_distance(racer.odometer):
                     print(f'{racer} приехал первый')
                     self.the_end = True
                     self.winner = racer
@@ -45,7 +45,7 @@ class Road:
     def __init__(self, len_circle: int):
         self.len_circle = len_circle
 
-    def end_distanсe(self, odometer: int) -> bool:
+    def end_distance(self, odometer: int) -> bool:
         if self.len_circle <= odometer:
             return True
         else:
