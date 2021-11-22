@@ -12,7 +12,7 @@ class Vehicle:
         return f'Скорость {self.speed}, вероятность прокола {self.puncture}'
 
     def start(self):
-        return f'{self.type_} начал движение {self.print_specifications()}'
+        return f'{self} начал движение {self.print_specifications()}'
 
     def move(self) -> str:
         """ расчет прохождения одного отрезка"""
