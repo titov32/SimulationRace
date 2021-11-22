@@ -42,10 +42,10 @@ class Simulation:
 
 
 class Road:
-    def __init__(self, len_circle):
+    def __init__(self, len_circle: int):
         self.len_circle = len_circle
 
-    def end_distanсe(self, odometer):
+    def end_distanсe(self, odometer: int) -> bool:
         if self.len_circle <= odometer:
             return True
         else:

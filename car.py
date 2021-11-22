@@ -2,7 +2,7 @@ from random import randint
 
 
 class Vehicle:
-    def __init__(self, puncture, speed):
+    def __init__(self, puncture: float, speed: int):
         self.puncture = puncture
         self.speed = speed
         self.type_ = 'Транспорт'
@@ -22,7 +22,7 @@ class Vehicle:
         else:
             print(f'Прокол колеса у {self}')
 
-    def get_puncture(self):
+    def get_puncture(self) -> bool:
         """ обработка прокола шины
         Если шанс прокола больше 9, прокол
         """
@@ -34,7 +34,7 @@ class Vehicle:
 
 
 class Track(Vehicle):
-    def __init__(self, puncture, speed, carrying):
+    def __init__(self, puncture: float, speed: int, carrying: int):
         Vehicle.__init__(self, puncture, speed)
         self.carrying = carrying
         self.type_ = 'Грузовик'
@@ -44,7 +44,7 @@ class Track(Vehicle):
 
 
 class Moto(Vehicle):
-    def __init__(self, puncture, speed, sidecar=False):
+    def __init__(self, puncture: float, speed: int, sidecar: bool):
         Vehicle.__init__(self, puncture, speed)
         self.sidecar = sidecar
         self.type_ = 'Мотоцикл'
@@ -57,7 +57,7 @@ class Moto(Vehicle):
 
 
 class Car(Vehicle):
-    def __init__(self, puncture, speed, capacity=1):
+    def __init__(self, puncture: float, speed: int, capacity=1):
         Vehicle.__init__(self, puncture, speed)
         self.capacity = capacity
         self.type_ = 'Легковой автомобиль'
