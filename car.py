@@ -26,7 +26,7 @@ class Vehicle:
         """ обработка прокола шины
         Если шанс прокола больше 9, прокол
         """
-        puncture = randint(0, 99) * self.puncture
+        puncture = randint(1, 100) * self.puncture
         if puncture > 9:
             return True
         else:
@@ -64,3 +64,4 @@ class Car(Vehicle):
 
     def __str__(self):
         return f'{self.type_} вместимость {self.capacity}'
+

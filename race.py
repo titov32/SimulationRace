@@ -7,7 +7,7 @@ class Simulation:
     def __init__(self, tracks, motos, cars):
         self.racers = []
         self.the_end = False
-        self.road = Road()
+        self.road = Road(LEN_CIRCLE)
         self.winner = None
         for track in tracks:
             self.racers.append(Track(*tracks[track]))
@@ -27,7 +27,7 @@ class Simulation:
             for racer in self.racers:
                 racer.move()
                 sleep(0.5)
-                if LEN_CIRCLE <= racer.odometer:
+                if self.road.end_distanсe(racer.odometer):
                     print(f'{racer} приехал первый')
                     self.the_end = True
                     self.winner = racer
@@ -42,5 +42,12 @@ class Simulation:
 
 
 class Road:
-    def __init__(self):
-        self.len_circle = LEN_CIRCLE
+    def __init__(self, len_circle):
+        self.len_circle = len_circle
+
+    def end_distanсe(self, odometer):
+        if self.len_circle <= odometer:
+            return True
+        else:
+            return False
+    # TODO можно добавить разные типы дорог и влияние на вероятность прокола
