@@ -1,26 +1,21 @@
 from car import Vehicle, Car, Track
+import pytest
 
 
-def test_move():
-    transport = Vehicle(0, 100)
+@pytest.mark.parametrize("punchure, speed, odometer", [(0, 100, 100),
+                                                       (0, 50, 50),
+                                                       (9, 100, 0)])
+def test_move(punchure, speed, odometer):
+    transport = Vehicle(punchure, speed)
     transport.move()
-    assert transport.odometer == 100
+    assert transport.odometer == odometer
 
 
-def test_punchure_func():
-    transport = Vehicle(9, 100)
-    assert transport.get_puncture()
-
-
-def test_punchure_move():
-    transport = Vehicle(9, 100)
-    transport.move()
-    assert transport.odometer == 0
-
-
-def test_not_punchure():
-    transport = Vehicle(0, 100)
-    assert not transport.get_puncture()
+@pytest.mark.parametrize("punchure, speed, result", [(0, 100, False),
+                                                     (9, 100, True)])
+def test_punchure_func(punchure, speed, result):
+    transport = Vehicle(punchure, speed)
+    assert transport.get_puncture() == result
 
 
 def test_car():

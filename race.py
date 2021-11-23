@@ -26,7 +26,7 @@ class Simulation:
         while not self.the_end:
             for racer in self.racers:
                 print(racer.move())
-                sleep(0.5)
+                sleep(0.1)
                 if self.road.end_distance(racer.odometer):
                     print(f'{racer} приехал первый')
                     self.the_end = True
